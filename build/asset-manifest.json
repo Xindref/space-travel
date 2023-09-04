@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cb636fdb.css",
+    "main.js": "/static/js/main.008bcf13.js",
+    "static/media/planet-earth.png": "/static/media/planet-earth.d60a30408d084c9265be.png",
+    "static/media/planet.png": "/static/media/planet.b1f69fbfada76b0df108.png",
+    "static/media/astronaut.png": "/static/media/astronaut.5b7c4d4a0f1988dbd695.png",
+    "static/media/rocket.png": "/static/media/rocket.b58a9096fceb35409309.png",
+    "static/media/wrench.png": "/static/media/wrench.a76ec8b8c244828a85e8.png",
+    "index.html": "/index.html",
+    "main.cb636fdb.css.map": "/static/css/main.cb636fdb.css.map",
+    "main.008bcf13.js.map": "/static/js/main.008bcf13.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb636fdb.css",
+    "static/js/main.008bcf13.js"
+  ]
+}

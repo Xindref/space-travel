@@ -59,7 +59,7 @@ function SpacecraftBuild() {
   }
 
   return (
-    <>
+    <div style={{ width: "100%" }}>
       <button
         className={styles["button__back"]}
         onClick={handleClickOfBack}
@@ -135,7 +135,7 @@ function SpacecraftBuild() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

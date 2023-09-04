@@ -90,7 +90,7 @@ function Planets() {
 
                 <div className={styles["planet__info"]}>
                   <div>{planet.name}</div>
-                  <div>{planet.currentPopulation}</div>
+                  <div>{parseInt(planet.currentPopulation)}</div>
                 </div>
               </div>
 

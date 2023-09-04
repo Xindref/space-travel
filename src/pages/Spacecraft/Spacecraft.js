@@ -1,21 +1,27 @@
-import {useState, useEffect, useContext} from "react";
-import {useParams} from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
 import styles from "./Spacecraft.module.css";
-import {LoadingContext} from "../../context/LoadingProvider";
+import { LoadingContext } from "../../context/LoadingProvider";
 import SpaceTravelApi from "../../services/SpaceTravelApi";
 
-function Spacecraft ()
-{
+function Spacecraft() {
   const [spacecraft, setSpacecraft] = useState();
-  const {id} = useParams();
-  const {enableLoading, disableLoading} = useContext(LoadingContext);
+  const { id } = useParams();
+  const { enableLoading, disableLoading } = useContext(LoadingContext);
 
-  useEffect(() =>
-            {
-              // todo get spacecraft from the API using the ID from the route (very similar to what we did in Planets.js)
-            },
-            [enableLoading, disableLoading]
+  useEffect(() => {
+    // todo get spacecraft from the API using the ID from the route (very similar to what we did in Planets.js)
+    async function runGetSpacecraft(id) {
+      enableLoading();
+      const thisSpacecraft = (await SpaceTravelApi.getSpacecraftById(id)).data;
+      setSpacecraft(thisSpacecraft);
+      disableLoading();
+    }
+
+    runGetSpacecraft({ id });
+  },
+    [enableLoading, disableLoading]
   );
 
   return (
@@ -25,14 +31,14 @@ function Spacecraft ()
       <div className={styles["spacecraft__imageContainer"]}>
         {
           spacecraft.pictureUrl
-          ?
-          <img
-            src={spacecraft.pictureUrl}
-            alt={`The spacecraft ${spacecraft.name}`}
-            className={styles["spacecraft__image"]}
-          />
-          :
-          <span className={styles["spacecraft__image--default"]}>🚀</span>
+            ?
+            <img
+              src={spacecraft.pictureUrl}
+              alt={`The spacecraft ${spacecraft.name}`}
+              className={styles["spacecraft__image"]}
+            />
+            :
+            <span className={styles["spacecraft__image--default"]}>🚀</span>
         }
       </div>
 

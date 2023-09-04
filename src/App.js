@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 
 import styles from "./App.module.css";
 import { LoadingContext } from "./context/LoadingProvider";
