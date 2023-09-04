@@ -46,7 +46,7 @@ function Spacecrafts() {
   }
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <button onClick={handleClickOfBuild}>
         🏗 Build a Spacecraft
       </button>

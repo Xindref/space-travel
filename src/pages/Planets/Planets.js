@@ -68,7 +68,7 @@ function Planets() {
   }
 
   return (
-    <>
+    <div style={{ width: "100%" }}>
       {
         planetsWithSpacecrafts.map(
           (planet, index) =>
@@ -127,7 +127,7 @@ function Planets() {
             </div>
         )
       }
-    </>
+    </div>
   );
 }
 
