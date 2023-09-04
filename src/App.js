@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       {
-        <HashRouter basename="/space-travel">
+        <BrowserRouter basename="/space-travel">
           <div className={styles["app"]}>
             <header className={styles["app__header"]}>
               <NavigationBar />
@@ -28,7 +28,7 @@ function App() {
               <Motto />
             </footer>
           </div>
-        </HashRouter>
+        </BrowserRouter>
       }
 
       {
