@@ -14,24 +14,25 @@ function App() {
   return (
     <>
       {
-        // todo wrap with BrowserRouter and render the necessary components
-        <div className={styles["app"]}>
-          <header className={styles["app__header"]}>
-            todo
-          </header>
+        <BrowserRouter>
+          <div className={styles["app"]}>
+            <header className={styles["app__header"]}>
+              <NavigationBar />
+            </header>
 
-          <main className={styles["app__main"]}>
-            <AppRoute />
-          </main>
+            <main className={styles["app__main"]}>
+              <AppRoute />
+            </main>
 
-          <footer className={styles["app__footer"]}>
-            todo
-          </footer>
-        </div>
+            <footer className={styles["app__footer"]}>
+              <Motto />
+            </footer>
+          </div>
+        </BrowserRouter>
       }
 
       {
-        // todo render Loading based on its condition
+        isLoading ? <Loading /> : null
       }
     </>
   );

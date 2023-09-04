@@ -1,12 +1,11 @@
-import {useState, useContext} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./SpacecraftBuild.module.css";
-import {LoadingContext} from "../../context/LoadingProvider";
+import { LoadingContext } from "../../context/LoadingProvider";
 import SpaceTravelApi from "../../services/SpaceTravelApi";
 
-function SpacecraftBuild ()
-{
+function SpacecraftBuild() {
   const INITIAL_SPACECRAFT = {
     name: "",
     capacity: "",
@@ -16,21 +15,47 @@ function SpacecraftBuild ()
   const [spacecraft, setSpacecraft] = useState(INITIAL_SPACECRAFT);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-  const {enableLoading, disableLoading} = useContext(LoadingContext);
+  const { enableLoading, disableLoading } = useContext(LoadingContext);
 
-  function handleChangeOfFormInput (event)
-  {
-    // todo update form state
+  function handleChangeOfFormInput(event) {
+    const { name, value } = event.target;
+    setSpacecraft((prevSpacecraft) => ({
+      ...prevSpacecraft,
+      [name]: value,
+    }))
   }
 
-  async function handleSubmitOfForm (event)
-  {
-    // todo submit the form using the API
+  async function handleSubmitOfForm(event) {
+    event.preventDefault();
+
+    const newErrors = [];
+
+    if (spacecraft.name === "") {
+      newErrors.push(("Every good ship needs a name commander."))
+    }
+    if (spacecraft.capacity === "") {
+      newErrors.push(("We seem to be lacking sufficient data for your capacity commander."))
+    }
+    if (spacecraft.description === "") {
+      newErrors.push(("Care to give us a brief description there commander?"))
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors);
+    }
+    else {
+      enableLoading();
+
+      await SpaceTravelApi.buildSpacecraft(spacecraft);
+      setSpacecraft(INITIAL_SPACECRAFT);
+      navigate('/spacecrafts')
+
+      disableLoading();
+    }
   }
 
-  function handleClickOfBack (event)
-  {
-    // todo navigate back
+  function handleClickOfBack(event) {
+    navigate('/spacecrafts');
   }
 
   return (

@@ -1,52 +1,45 @@
-import {useState, useContext, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import styles from "./Spacecrafts.module.css";
-import {LoadingContext} from "../../context/LoadingProvider";
+import { LoadingContext } from "../../context/LoadingProvider";
 import SpaceTravelApi from "../../services/SpaceTravelApi";
 
-function Spacecrafts ()
-{
+function Spacecrafts() {
   const [spacecrafts, setSpacecrafts] = useState([]);
-  const {enableLoading, disableLoading} = useContext(LoadingContext);
+  const { enableLoading, disableLoading } = useContext(LoadingContext);
 
-  async function getSpacecrafts ()
-  {
-    // todo get spacecrafts using the API
+  async function getSpacecrafts() {
+    const spacecraftsList = await SpaceTravelApi.getSpacecrafts();
+    setSpacecrafts(spacecraftsList.data);
   }
 
-  useEffect(() =>
-            {
-              async function runGetSpacecrafts ()
-              {
-                enableLoading();
-                await getSpacecrafts();
-                disableLoading();
-              }
+  useEffect(() => {
+    async function runGetSpacecrafts() {
+      enableLoading();
+      await getSpacecrafts();
+      disableLoading();
+    }
 
-              runGetSpacecrafts();
-            },
-            [enableLoading, disableLoading]
+    runGetSpacecrafts();
+  },
+    [enableLoading, disableLoading]
   );
 
   const navigate = useNavigate();
 
-  function handleClickOfBuild ()
-  {
-    // todo navigate to build spacecraft page
+  function handleClickOfBuild() {
+    navigate('/spacecraftbuild')
   }
 
-  function handleClickOfImageContainer (event, id)
-  {
+  function handleClickOfImageContainer(event, id) {
     navigate(`/spacecraft/${id}`);
   }
 
-  async function handleClickOfDestroy (event, id)
-  {
+  async function handleClickOfDestroy(event, id) {
     enableLoading();
-    const {isError} = await SpaceTravelApi.destroySpacecraftById({id});
-    if (!isError)
-    {
+    const { isError } = await SpaceTravelApi.destroySpacecraftById({ id });
+    if (!isError) {
       await getSpacecrafts();
     }
     disableLoading();
@@ -71,14 +64,14 @@ function Spacecrafts ()
                 >
                   {
                     spacecraft.pictureUrl
-                    ?
-                    <img
-                      src={spacecraft.pictureUrl}
-                      alt={`The spacecraft ${spacecraft.name}`}
-                      className={styles["spacecraft__image"]}
-                    />
-                    :
-                    <span className={styles["spacecraft__image--default"]}>🚀</span>
+                      ?
+                      <img
+                        src={spacecraft.pictureUrl}
+                        alt={`The spacecraft ${spacecraft.name}`}
+                        className={styles["spacecraft__image"]}
+                      />
+                      :
+                      <span className={styles["spacecraft__image--default"]}>🚀</span>
                   }
                 </div>
 

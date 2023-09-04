@@ -1,18 +1,15 @@
 *,
 *::before,
-*::after
-{
+*::after {
   box-sizing: inherit;
 }
 
-html
-{
+html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
 
-body
-{
+body {
   font-family: sans-serif;
   width: 100vw;
   min-height: 100vh;
@@ -20,8 +17,7 @@ body
   background-color: #000000;
 }
 
-button
-{
+button {
   font-size: 1.2rem;
   padding: 0.5rem;
   color: #ffffff;
@@ -29,14 +25,12 @@ button
   background-color: transparent;
 }
 
-button:hover
-{
+button:hover {
   border-color: #6cd265;
 }
 
 input,
-textarea
-{
+textarea {
   font-size: 1.2rem;
   width: 100%;
   padding: 0.5rem;
@@ -46,13 +40,11 @@ textarea
   background-color: transparent;
 }
 
-textarea
-{
+textarea {
   min-height: 12rem;
 }
 
 textarea:hover,
-input:hover
-{
+input:hover {
   border-color: #6cd265;
 }
