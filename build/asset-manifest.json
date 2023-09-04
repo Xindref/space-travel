@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/space-travel/static/css/main.3548acac.css",
-    "main.js": "/space-travel/static/js/main.4274abe7.js",
+    "main.js": "/space-travel/static/js/main.f0ec3b22.js",
     "static/media/planet-earth.png": "/space-travel/static/media/planet-earth.d60a30408d084c9265be.png",
     "static/media/planet.png": "/space-travel/static/media/planet.b1f69fbfada76b0df108.png",
     "static/media/astronaut.png": "/space-travel/static/media/astronaut.5b7c4d4a0f1988dbd695.png",
@@ -9,10 +9,10 @@
     "static/media/wrench.png": "/space-travel/static/media/wrench.a76ec8b8c244828a85e8.png",
     "index.html": "/space-travel/index.html",
     "main.3548acac.css.map": "/space-travel/static/css/main.3548acac.css.map",
-    "main.4274abe7.js.map": "/space-travel/static/js/main.4274abe7.js.map"
+    "main.f0ec3b22.js.map": "/space-travel/static/js/main.f0ec3b22.js.map"
   },
   "entrypoints": [
     "static/css/main.3548acac.css",
-    "static/js/main.4274abe7.js"
+    "static/js/main.f0ec3b22.js"
   ]
 }
